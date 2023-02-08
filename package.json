@@ -1,0 +1,19 @@
+{
+  "name": "mintbase-pzt-session-nft-bot",
+  "version": "1.0.0",
+  "description": "User session connected NFT bot to connect with smart contract oracle",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pztask/mintbase-pzt-session-nft-bot.git"
+  },
+  "author": "pztask",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pztask/mintbase-pzt-session-nft-bot/issues"
+  },
+  "homepage": "https://github.com/pztask/mintbase-pzt-session-nft-bot#readme"
+}
