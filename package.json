@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "User session connected NFT bot to connect with smart contract oracle",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/pztask/mintbase-pzt-session-nft-bot/issues"
   },
-  "homepage": "https://github.com/pztask/mintbase-pzt-session-nft-bot#readme"
+  "homepage": "https://github.com/pztask/mintbase-pzt-session-nft-bot#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "near-api-js": "^1.1.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.4"
+  }
 }
