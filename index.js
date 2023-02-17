@@ -12,26 +12,35 @@ async function main() {
     const permitsToVerify = await contract.get_oracle_permits_to_verify();
     logger.info("Permits to verify:", { permits: permitsToVerify });
 
-    for await (const permit of permitsToVerify) {
-      const permitIsValid = await ValidatePermit(permit);
+    if (permitsToVerify.length > 0) {
+      for await (const permit of permitsToVerify) {
+        const permitIsValid = await ValidatePermit(permit);
 
-      if (permitIsValid) {
-        permitsGranted.push(permit);
-      } else {
-        permitsRejected.push(permit);
+        if (permitIsValid) {
+          permitsGranted.push(permit);
+        } else {
+          permitsRejected.push(permit);
+        }
       }
+      logger.info("Permits granted:", { permits: permitsGranted });
+      logger.info("Permits rejected:", { permits: permitsRejected });
+
+      if (permitsGranted.length > 0) {
+        await contract.permits_granted({
+          permits: permitsGranted,
+        });
+      }
+
+      if (permitsRejected.length > 0) {
+        await contract.permits_rejected({
+          permits: permitsRejected,
+        });
+      }
+
+      logger.info("Succesfully verified all permits.");
+    } else {
+      logger.info("There's no permits to verify.");
     }
-    logger.info("Permits granted:", { permits: permitsGranted });
-    logger.info("Permits rejected:", { permits: permitsRejected });
-
-    await contract.permits_granted({
-      permits: permitsGranted,
-    });
-    await contract.permits_rejected({
-      permits: permitsRejected,
-    });
-
-    logger.info("Succesfully verified all permits.");
   } catch (e) {
     logger.error("Error thrown while processing permits: ", {
       error: e.message,
