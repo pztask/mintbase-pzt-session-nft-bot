@@ -22,8 +22,8 @@ async function main() {
           permitsRejected.push(permit);
         }
       }
-      logger.info("Permits granted:", { permits: permitsGranted });
-      logger.info("Permits rejected:", { permits: permitsRejected });
+      logger.info("Permits to grant:", { permits: permitsGranted });
+      logger.info("Permits to reject:", { permits: permitsRejected });
 
       if (permitsGranted.length > 0) {
         await contract.permits_granted({
